@@ -13,7 +13,7 @@ const getHeader = () => {
   return element;
 };
 
-document.body.appendChild(getHeader());
+//document.body.appendChild(getHeader());
 
 const o = {
   foo: {

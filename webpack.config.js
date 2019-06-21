@@ -4,6 +4,7 @@ const argv = require('yargs').argv;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const isDevelopment = argv.mode === 'development';
 const isProduction = !isDevelopment;
@@ -73,7 +74,9 @@ const config = {
       },
     }]
   },
+
   plugins: [
+    new LiveReloadPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'

@@ -5,8 +5,144 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <title>Webpack starter</title>
+    <title>Chat</title>
+    <link rel="stylesheet" href="font-awesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap&subset=cyrillic" rel="stylesheet">
+    <script src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
+<div class="container">
+    <header>
+        <div class="chat-logo">
+        <a href="#" class="logo"><img src="images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="time-box">
+            <div class="time__current">
+                <h3>Current time:</h3>
+                <span class="time">12:25</span>
+            </div>
+            <div class="time__online">
+                <h3>Time online:</h3>
+                <span class="time">27 min</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="main">
+        <section class="sidebar">
+            <div class="users-data">
+                <div class="user">
+                    <img src="images/avatar.jpg" alt="user_photo" class="ava">
+                </div>
+                <a href="#" class="profile">
+                    <span class="name">Aleksandr Poltorak</span>
+                </a>
+                <a href="#" class="edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </div>
+            <div class="my-msg">
+                <a href="#" class="my-msg">
+                    <span>My massages</span>
+                    <div class="no-reads-msg">2</div>
+                </a>
+            </div>
+            <div class="now-online">
+                <span>Now online:</span>
+                <span class="number">3</span>
+            </div>
+
+            <div class="dialogs">
+                <div class="dialogs__item">
+                    <img class="avatar" src="images/avatar1.jpg" alt="photo">
+                    <div class="status_online">
+                    </div>
+                    <span class="username">David Villa</span>
+                </div>
+                <div class="dialogs__item">
+                    <img class="avatar" src="images/avatar2.jpg" alt="photo">
+                    <div class="status_online">
+                    </div>
+                    <span class="username">Michael Trewoll</span>
+                </div>
+                <div class="dialogs__item">
+                    <img class="avatar" src="images/avatar3.jpg" alt="photo">
+                    <div class="status_online">
+                    </div>
+                    <span class="username">Steve Jobs </span>
+                </div>
+                <div class="dialogs__item">
+                    <img class="avatar" src="images/avatar4.jpg" alt="photo">
+                    <div class="status_offline">
+                    </div>
+                    <span class="username">Diana Shevchenko</span>
+                </div>
+            </div>
+            <div class="massage-info">
+                <span>Characters entered: </span><span>17</span><br>
+                <span>Letters entered: </span><span>14</span><br>
+                <span>Invisible characters: </span><span>3</span><br>
+                <span>Punctuation marks: </span><span>1</span>
+            </div>
+        </section>
+
+        <section class="chat-box">
+            <div class="chat-box__top-line">
+                <span class="name-dialog">
+                    Diana Shevchenko
+                </span>
+                <span class="last-online">
+                    last seen 17 minutes ago
+                </span>
+            </div>
+
+            <div class="massage-box">
+                <div class="massage in">
+                        <img src="images/avatar4.jpg" alt="" class="avatar-in-msg">
+                        <div class="text-msg">
+                            Hey, where are you?
+                        </div>
+                </div>
+
+                <div class="massage out">
+                        <img src="images/avatar.jpg" alt="" class="avatar-in-msg">
+                        <div class="text-msg">
+                            Hi, I'm at home now
+                        </div>
+                </div>
+
+                <div class="massage out">
+                    <img src="images/avatar.jpg" alt="" class="avatar-in-msg">
+                    <div class="text-msg">
+                        Let's go to the park?
+                    </div>
+                </div>
+
+                <div class="massage in">
+                    <img src="images/avatar4.jpg" alt="" class="avatar-in-msg">
+                    <div class="text-msg">
+                        Ohh, nice idea!
+                    </div>
+                </div>
+
+            </div>
+            <section class="text-input">
+                <div class="text-box">
+                    <input type="text" name="msg" class="text" placeholder="write a massage...">
+                    <button class="send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="edit-font-style">
+                    <button class="bold">B</button>
+                    <button class="cursive">C</button>
+                    <button class="underlined">U</button>
+                </div>
+            </section>
+        </section>
+    </section>
+</div>
 </body>
 </html>

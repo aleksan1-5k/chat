@@ -1,10 +1,290 @@
-$color: teal;
+@import "../font-awesome/css/all.min.css";
+$back: #c2ebef;
+$aqua: #32dfef;
+$dark: #406063;
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: $back;
+  font-family: 'Roboto Slab', serif;
+  color: $dark;
+}
+.container{
+  margin:  0 10%;
+  box-sizing: border-box;
+  //border: solid $dark 2px;
+  height: 100vh;
+  position: relative;
+}
 
-h1 {
+/*HEADER*/
+header{
+  width: 100%;
+  height: 50px;
+  background: $aqua;
+}
+.chat-logo{
+  position: absolute;
+  left: 35px;
+  top: 2px;
+}
+.logo img{
+  width: 120px;
+}
+.time-box{
+  float: right;
+  margin-top: 8px;
+}
+.time__current,.time__online{
+  display: inline-block;
+  margin-right: 7px;
+  padding: 4px;
+}
+.time{
+  color: $dark;
+  border: 1px solid $dark;
+  border-radius: 3px;
+}
+.time-box h3{
+  display: inline-block;
+}
+
+/* MAIN section*/
+.main{
+  width: 100%;
   display: flex;
-  justify-content: center;
-  padding: 30px;
-  background-color: $color;
-  color: white;
+  height: 690px;
+}
+.sidebar{
+  float: left;
+  width: 25%;
+  height: 690px;
+  background: $aqua;
+}
+.dialogs{
+  width: 100%;
+  height: 380px;
+  background-color: $dark;
+  border-radius: 3px;
+}
+.ava{
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 10px auto;
+  display: block;
+}
+.users-data{
+  position: relative;
+}
+a.profile{
+  font-size: 20px;
+  text-align: center;
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  color: $dark;
+  transition: 0.6s;
+}
+a.profile:hover{
+  color: #000;
+}
+a.edit{
+  text-decoration: none;
+}
+.fa-edit{
+  color: $dark;
+  font-size: 20px;
+  padding: 0 auto;
+  position: absolute;
+  bottom: 5%;
+  left: 1%;
+}
+.dialogs__item{
+  border: solid #484848 1px;
+  border-radius: 3px;
+  position: relative;
+}
+.dialogs__item:last-child{
+  background: url("../images/aqua_background.jpg");
+}
+.dialogs__item:last-child span.username{
+  color: $dark;
+  font-weight: bold;
+}
+.avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: 2%;
+  margin-left: 1%;
+}
+.status_online, .status_offline{
+  width: 10px;
+  height: 10px;
+  background: #48ff0b;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.status_offline{
+  background: #ff0909;
+}
+.username{
+  width: 70%;
+  position: absolute;
+  top: 33%;
+}
+span.username {
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+.my-msg{
+  margin-top: 2%;
+  margin-left: 1%;
+  text-decoration: none;
+  color: $dark;
+  font-family: Nunito, sans-serif;
+  font-size: 18px;
+}
+.no-reads-msg{
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  border: #ff0909 2px solid;
+  border-radius: 50%;
+  display: inline-block;
   text-align: center;
 }
+.now-online{
+  margin-left: 2%;
+  color: $dark;
+  font-family: Nunito, sans-serif;
+  font-size: 18px;
+}
+.massage-info{
+  margin: 4% 4%;
+}
+
+/*MESSAGE*/
+.chat-box{
+  width: 75%;
+  height: 688px;
+  border: solid $dark 2px;
+  float: left;
+}
+.chat-box__top-line{
+  width: 100%;
+  height: 60px;
+  background: $dark;
+  color: #fff;
+  text-align: center;
+  line-height: 60px;
+}
+.massage-box{
+  width: 100%;
+  height: 518px;
+  border-bottom: 2px solid $dark;
+  border-radius: 6px;
+  background: url("../images/aqua_background.jpg");
+}
+.massage{
+  max-width: 400px;
+  width: 100%;
+  height: 80px;
+  border: 1px $dark solid;
+  border-radius: 5px;
+  margin: 5px;
+  display: flex;
+}
+.in{
+  float: left;
+  width: 75%;
+  display: flex;
+  margin-right: 100px; /*КОСТЫЛЬ*/
+}
+.out{
+  float: right;
+  width: 75%;
+  display: flex;
+  margin-right:53px; /*КОСТЫЛЬ*/
+}
+.text-msg{
+  width: 75%;
+  vertical-align: middle;
+}
+.avatar-in-msg{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+/*section text-input */
+.text-input{
+  width: 100%;
+  height: 108px;
+  background: $aqua;
+}
+.text-box{
+  //margin-top: 1%;
+  margin-left: 1%;
+
+}
+.text{
+  width: calc(100% - 60px);
+  height: 40px;
+  font-size: 20px;
+  float: left;
+  margin-top: 1%;
+  border-radius: 20px;
+  border-color: $back;
+  background-color: $aqua;
+  outline: none;
+}
+input[type="text"]::placeholder {
+  padding-left: 1%;
+}
+.fa-paper-plane{
+  font-size: 20px;
+  margin: 15px 1px;
+}
+button.send{
+  //display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+  height: 44px;
+  width: 44px;
+  border-radius:50% ;
+  background:transparent;
+  color: $dark;
+  border: none;
+}
+.edit-font-style{
+  margin:12px;
+}
+.edit-font-style button{
+  width: 4%;
+  padding: 2px;
+  background-color: transparent;
+  border-radius: 5px;
+}
+.bold{
+  font-weight: bold;
+}
+.cursive{
+  font-style: italic;
+}
+.underlined{
+  text-decoration: underline;
+}
+
+
