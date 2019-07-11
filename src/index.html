@@ -7,11 +7,27 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>Chat</title>
     <link rel="stylesheet" href="font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="sass/modal_login.scss" media="screen" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap&subset=cyrillic" rel="stylesheet">
     <script src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
+<!-- Modal box LOGin -->
+<div class="login_wrap">
+<div id="login">
+    <form action="javascript:void(0);">
+        <fieldset class="clearfix">
+            <p><span class="fontawesome-user"></span><input type="text" class="user-name" placeholder="Username" required></p>
+            <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password"></p>
+            <p><input class="login_submit" type="submit" value="ВОЙТИ"></p>
+            <p><input class="registration_submit" type="submit" value="Зарегистрироваться"></p>
+        </fieldset>
+    </form>
+</div>
+</div>
+<!--end Modal box LOGin -->
+
 <div class="container">
     <header>
         <div class="chat-logo">
@@ -29,6 +45,8 @@
             </div>
         </div>
     </header>
+
+
 
     <section class="main">
         <section class="sidebar">
