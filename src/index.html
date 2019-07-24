@@ -6,12 +6,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>Chat</title>
-    <link rel="stylesheet" href="font-awesome/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap&subset=cyrillic" rel="stylesheet">
     <script src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
+<!-- Modal box LOGin -->
+<div class="login_wrap" id="modal_login">
+<div id="login">
+    <form action="javascript:void(0);">
+        <fieldset class="clearfix">
+            <p><span class="fontawesome-user"></span><input type="text" class="user-name" placeholder="Username" required></p>
+            <p><input class="login_submit" type="submit" value="ВОЙТИ"></p>
+            <p><input class="registration_submit" type="submit" value="Зарегистрироваться"></p>
+        </fieldset>
+    </form>
+</div>
+</div>
+<!--end Modal box LOGin -->
+
 <div class="container">
     <header>
         <div class="chat-logo">
@@ -21,23 +34,26 @@
         <div class="time-box">
             <div class="time__current">
                 <h3>Current time:</h3>
-                <span class="time">12:25</span>
+                <span class="time" id="now_time">12:25</span>
             </div>
             <div class="time__online">
                 <h3>Time online:</h3>
-                <span class="time">27 min</span>
+                <span class="time" id="time_in_online">27 min</span>
             </div>
         </div>
     </header>
+
+
 
     <section class="main">
         <section class="sidebar">
             <div class="users-data">
                 <div class="user">
-                    <img src="images/avatar.jpg" alt="user_photo" class="ava">
+                    <img src="https://visualpharm.com/assets/482/Circled%20User%20Male%20Skin%20Type%204-595b40b65ba036ed117d3de9.svg"
+                         alt="user_photo" class="ava">
                 </div>
-                <a href="#" class="profile">
-                    <span class="name">Aleksandr Poltorak</span>
+                <a href="#" class="profile" id="profile">
+<!--                    <span class="name">Aleksandr Poltorak</span>-->
                 </a>
                 <a href="#" class="edit">
                     <i class="fas fa-edit"></i>
@@ -51,40 +67,44 @@
             </div>
             <div class="now-online">
                 <span>Now online:</span>
-                <span class="number">3</span>
+                <span class="number" id="now-active">3</span>
             </div>
 
-            <div class="dialogs">
-                <div class="dialogs__item">
-                    <img class="avatar" src="images/avatar1.jpg" alt="photo">
-                    <div class="status_online">
-                    </div>
-                    <span class="username">David Villa</span>
-                </div>
-                <div class="dialogs__item">
-                    <img class="avatar" src="images/avatar2.jpg" alt="photo">
-                    <div class="status_online">
-                    </div>
-                    <span class="username">Michael Trewoll</span>
-                </div>
-                <div class="dialogs__item">
-                    <img class="avatar" src="images/avatar3.jpg" alt="photo">
-                    <div class="status_online">
-                    </div>
-                    <span class="username">Steve Jobs </span>
-                </div>
-                <div class="dialogs__item">
-                    <img class="avatar" src="images/avatar4.jpg" alt="photo">
-                    <div class="status_offline">
-                    </div>
-                    <span class="username">Diana Shevchenko</span>
-                </div>
+            <div class="dialogs" id="dialogs">
+<!--                <div class="dialogs__item">-->
+<!--                    <img class="avatar" src="images/avatar1.jpg" alt="photo">-->
+<!--                    <div class="status_online">-->
+<!--                    </div>-->
+<!--                    <span class="username">David Villa</span>-->
+<!--                </div>-->
+<!--                <div class="dialogs__item">-->
+<!--                    <img class="avatar" src="images/avatar2.jpg" alt="photo">-->
+<!--                    <div class="status_online">-->
+<!--                    </div>-->
+<!--                    <span class="username">Michael Trewoll</span>-->
+<!--                </div>-->
+<!--                <div class="dialogs__item">-->
+<!--                    <img class="avatar" src="images/avatar3.jpg" alt="photo">-->
+<!--                    <div class="status_online">-->
+<!--                    </div>-->
+<!--                    <span class="username">Steve Jobs </span>-->
+<!--                </div>-->
+<!--                <div class="dialogs__item">-->
+<!--                    <img class="avatar" src="images/avatar4.jpg" alt="photo">-->
+<!--                    <div class="status_offline">-->
+<!--                    </div>-->
+<!--                    <span class="username">Diana Shevchenko</span>-->
+<!--                </div>-->
             </div>
             <div class="massage-info">
-                <span>Characters entered: </span><span>17</span><br>
-                <span>Letters entered: </span><span>14</span><br>
-                <span>Invisible characters: </span><span>3</span><br>
-                <span>Punctuation marks: </span><span>1</span>
+                <span>Characters entered: </span>
+                <span id="allChars"></span><br>
+                <span>Letters entered: </span>
+                <span id="letters"></span><br>
+                <span>Invisible characters: </span>
+                <span id="spaces"></span><br>
+                <span>Punctuation marks: </span>
+                <span id="punctChars"></span>
             </div>
         </section>
 
@@ -98,7 +118,7 @@
                 </span>
             </div>
 
-            <div class="massage-box">
+            <div class="massage-box" id="massage-box">
                 <div class="massage in">
                         <img src="images/avatar4.jpg" alt="" class="avatar-in-msg">
                         <div class="text-msg">
@@ -130,15 +150,15 @@
             </div>
             <section class="text-input">
                 <div class="text-box">
-                    <input type="text" name="msg" class="text" placeholder="write a massage...">
+                    <textarea placeholder = "write a massage..." class="text" id="text"></textarea>
                     <button class="send">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
                 <div class="edit-font-style">
-                    <button class="bold">B</button>
-                    <button class="cursive">C</button>
-                    <button class="underlined">U</button>
+                    <button class="bold" id="bold">B</button>
+                    <button class="cursive" id="cursive">C</button>
+                    <button class="underlined" id="underlined">U</button>
                 </div>
             </section>
         </section>

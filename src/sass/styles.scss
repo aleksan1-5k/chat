@@ -1,4 +1,5 @@
 @import "../font-awesome/css/all.min.css";
+@import "modal_login";
 $back: #c2ebef;
 $aqua: #32dfef;
 $dark: #406063;
@@ -17,6 +18,15 @@ body{
   //border: solid $dark 2px;
   height: 100vh;
   position: relative;
+}
+.login_wrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255,0.7);
 }
 
 /*HEADER*/
@@ -68,6 +78,29 @@ header{
   height: 380px;
   background-color: $dark;
   border-radius: 3px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+//стилизация скрола
+::-webkit-scrollbar{
+  width:12px;
+}
+::-webkit-scrollbar-thumb{
+  border-width:1px 1px 1px 2px;
+  border-color: #777777;
+  background-color: $aqua;
+}
+::-webkit-scrollbar-thumb:hover{
+  border-width: 1px 1px 1px 2px;
+  border-color: #555;
+  background-color: $aqua;
+}
+::-webkit-scrollbar-track{
+  border-width:0;
+}
+::-webkit-scrollbar-track:hover{
+  border-left: solid 1px #aaa;
+  background-color: #eee;
 }
 .ava{
   width: 96px;
@@ -108,13 +141,6 @@ a.edit{
   border-radius: 3px;
   position: relative;
 }
-.dialogs__item:last-child{
-  background: url("../images/aqua_background.jpg");
-}
-.dialogs__item:last-child span.username{
-  color: $dark;
-  font-weight: bold;
-}
 .avatar{
   width: 60px;
   height: 60px;
@@ -122,17 +148,24 @@ a.edit{
   margin-top: 2%;
   margin-left: 1%;
 }
-.status_online, .status_offline{
+.status_online, .status_offline, .status_leave{
   width: 10px;
   height: 10px;
-  background: #48ff0b;
   border-radius: 50%;
   position: absolute;
   top: 50px;
   left: 50px;
 }
+.status_online{
+  background: #48ff0b;
+}
 .status_offline{
+  width: 10px;
+  height: 10px;
   background: #ff0909;
+}
+.status_leave{
+  background: #fff80f;
 }
 .username{
   width: 70%;
@@ -204,6 +237,9 @@ span.username {
   margin: 5px;
   display: flex;
 }
+b,i,u{
+  font-family: 'Nunito', sans-serif;
+}
 .in{
   float: left;
   width: 75%;
@@ -239,18 +275,22 @@ span.username {
   margin-left: 1%;
 
 }
+
+
 .text{
   width: calc(100% - 60px);
   height: 40px;
   font-size: 20px;
   float: left;
   margin-top: 1%;
-  border-radius: 20px;
+  border-radius: 12px;
   border-color: $back;
   background-color: $aqua;
   outline: none;
+  overflow: hidden;
+  resize: none;
 }
-input[type="text"]::placeholder {
+textarea::placeholder {
   padding-left: 1%;
 }
 .fa-paper-plane{
