@@ -189,6 +189,9 @@ function displayUsers() {
   }
 }
 
+
+
+
 // подсчет введенных символов
 function count() {
   if (event.keyCode == 8) words -= 1;
@@ -235,8 +238,6 @@ function sendMessage() {
   var message = document.getElementById('text').value;
 
   if (message.length > 500) return alert('Максимальная длина сообщения не должна превышать 500 символов!');
-  // if (message.length == 0 || words <= 0 || isAllSpaces
-  //     || message.value == 0) return alert('Введите сообщение!');
 
   document.getElementById('massage-box').innerHTML += '<div class="massage out">' + message +
       '</div>';
@@ -354,11 +355,18 @@ function displayMessages() {
         let message = messages[i].message;
         console.log(message);
 
+        //-----кусок который ДОЛЖЕН считать все мои отправленые сообщения
+        var mymsg = 0;
+        if (messages[i].user_id == userNowId) {
+            mymsg++;
+        }
+        document.getElementById('no-reads-msg').innerHTML = mymsg;
+        ////----------
 
         daysAgo = (Date.now() - Date.parse(messages[i].datetime)) / 8.64e7 ^ 0;
         if (daysAgo == 0) daysAgo = 'Сегодня';
         else if (daysAgo == 1) daysAgo = 'Вчера';
-        else daysAgo = daysAgo + ' дней назад';
+        else daysAgo = daysAgo + ' дня назад';
 
         // если дата повторяется
         let dateLast = [];
@@ -367,19 +375,19 @@ function displayMessages() {
             // если сообщение от userNow
             if (messages[i].user_id == userNowId) {
                 document.getElementById('massage-box').innerHTML +='</div>' +
-                    '<div class="message out">' + message +
+                    '<div class="massage out">' + message +
                     '<br><span class="date">' + date + '</span></div>';
             }
             // если сообщение от того же юзера
             else if (i != 0 && messages[i].user_id == messages[i - 1].user_id) {
                 document.getElementById('massage-box').innerHTML +='</div>' +
-                    '<div class="message in">' + message +
+                    '<div class="massage in">' + message +
                     '<br><span class="date">' + date + '</span></div>';
             }
 
             else {
                 document.getElementById('massage-box').innerHTML +='</div>' +
-                    '<div class="name">' + getName(messages[i].user_id) + '</div>' + '<div class="message left">' + message +
+                    '<div class="name_in_msg">' + getName(messages[i].user_id) + '</div>' + '<div class="massage in">' + message +
                     '<br><span class="date">' + date + '</span></div>';
             }
         }
@@ -388,25 +396,26 @@ function displayMessages() {
             // если сообщение от userNow
             if (messages[i].user_id == userNowId) {
                 document.getElementById('massage-box').innerHTML += '<div class="days-ago"><hr>' + daysAgo + '</div>' +
-                    '<div class="message right">' + message +
+                    '<div class="massage out">' + message +
                     '<br><span class="date">' + date + '</span></div>';
             }
             // если сообщение от того же юзера
             else if (i != 0 && messages[i].user_id == messages[i - 1].user_id) {
                 document.getElementById('massage-box').innerHTML += '<div class="days-ago"><hr>' + daysAgo + '</div>' +
-                    '<div class="message left">' + message +
+                    '<div class="massage in">' + message +
                     '<br><span class="date">' + date + '</span></div>';
             }
 
             else {
                 document.getElementById('massage-box').innerHTML += '<div class="days-ago"><hr>' + daysAgo + '</div>' +
-                    '<div class="name">' + getName(messages[i].user_id) + '</div>' + '<div class="message left">' + message +
+                    '<div class="name_in_msg">' + getName(messages[i].user_id) + '</div>' + '<div class="massage in">' + message +
                     '<br><span class="date">' + date + '</span></div>';
             }
         }
     }
     setTimeout(scrollBottom, 10); // БАГ
 }
+
 function getName(userId) {
     for (let i = 0; i < users.length; i++) {
         if (users[i].user_id == userId) return users[i].username;
@@ -415,3 +424,6 @@ function getName(userId) {
 function scrollBottom() {
     document.getElementById('massage-box').scrollTop = document.getElementById('massage-box').scrollHeight;
 }
+
+
+

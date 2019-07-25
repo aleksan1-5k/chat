@@ -222,35 +222,73 @@ span.username {
   line-height: 60px;
 }
 .massage-box{
-  width: 100%;
+
   height: 518px;
   border-bottom: 2px solid $dark;
   border-radius: 6px;
   background: url("../images/aqua_background.jpg");
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+
 }
 .massage{
-  max-width: 400px;
-  width: 100%;
-  height: 80px;
   border: 1px $dark solid;
   border-radius: 5px;
+  max-width: 400px;
   margin: 5px;
-  display: flex;
+  //font-size: 0.9em;
+  background-color: #F8FBFB;
+  padding: 15px;
+  padding-bottom: 5px;
+  text-align: left;
+  word-break: break-all;
+}
+.days-ago {
+  width: 380px;
+  text-align: center;
+  padding-top: 10px;
+  margin-right: auto;
+  margin-bottom: 5px;
+  margin-left: auto;
+  color: #ffffff;
+}
+.date {
+  position: relative;
+  color: #9c9c9c;
+  left: 10px;
+  float: right;
+  font-size: 0.8em;
+}
+.name_in_msg {
+  font-family: Nunito, sans-serif;
+  font-weight: bold;
+  color: #41456D;
+  max-width: 235px;
+  margin-top: 12px;
+  margin-left: 10px;
 }
 b,i,u{
   font-family: 'Nunito', sans-serif;
 }
 .in{
-  float: left;
-  width: 75%;
-  display: flex;
-  margin-right: 100px; /*КОСТЫЛЬ*/
+  max-width: 430px;
+  margin-right: auto;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-left: 20px;
+  margin-top: 5px;
 }
 .out{
-  float: right;
-  width: 75%;
-  display: flex;
-  margin-right:53px; /*КОСТЫЛЬ*/
+  max-width: 430px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-left: auto;
+  margin-right: 10px;
+
 }
 .text-msg{
   width: 75%;
